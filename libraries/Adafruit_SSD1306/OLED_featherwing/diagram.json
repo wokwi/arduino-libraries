@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "id": "uno", "type": "wokwi-arduino-uno", "top": 70, "left": 20 },
+    { "id": "ssd1306", "type": "wokwi-ssd1306", "left": 100, "top": 300 },
+  {
+      "id": "btn-red",
+      "type": "wokwi-pushbutton",
+      "attrs": { "color": "red" },
+      "top": 10,
+      "left": 120
+    },
+    {
+      "id": "btn-green",
+      "type": "wokwi-pushbutton",
+      "top": 10,
+      "left": 200,
+      "attrs": { "color": "green" }
+    },
+    {
+      "id": "btn-blue",
+      "type": "wokwi-pushbutton",
+      "top": 10,
+      "left": 280,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    ["uno:GND.2", "ssd1306:GND", "black", ["v12", "*", "h0"]],
+    ["uno:5V", "ssd1306:VIN", "red", ["v16", "*", "h0"]],
+    ["uno:A4", "ssd1306:DATA", "blue", ["v20", "*", "h0"]],
+    ["uno:GND.1", "btn-blue:2.r", "black", ["v-12", "*", "h6"]],
+    ["uno:GND.1", "btn-green:2.r", "black", ["v-12", "*", "h6"]],
+    ["uno:GND.1", "btn-red:2.r", "black", ["v-12", "*", "h6"]],
+    ["uno:9", "btn-red:1.l", "red", []],
+    ["uno:6", "btn-green:1.l", "green", []],
+    ["uno:5", "btn-blue:1.l", "blue", []]
+
+  ]
+}
