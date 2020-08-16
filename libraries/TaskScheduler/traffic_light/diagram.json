@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "id": "uno", "type": "wokwi-arduino-uno", "top": 120, "left": 20 },
+    { "id": "led-r", "type": "wokwi-led", "left": 160, "top": -20, "rotate": 90, "attrs": { "color": "red" } },
+    { "id": "led-y", "type": "wokwi-led", "left": 160, "top": 15, "rotate": 90, "attrs": { "color": "yellow" } },
+    { "id": "led-g", "type": "wokwi-led", "left": 160, "top": 50, "rotate": 90, "attrs": { "color": "green" } },
+    { "id": "led-w", "type": "wokwi-led", "left": 80, "top": 50, "attrs": { "color": "white" } }
+  ],
+  "connections": [
+    ["uno:GND.1", "led-r:C", "black", ["v-12", "*", "h-16"]],
+    ["uno:GND.1", "led-y:C", "black", ["v-12", "*", "h-16"]],
+    ["uno:GND.1", "led-g:C", "black", ["v-12", "*", "h-16"]],
+    ["uno:GND.1", "led-w:C", "black", ["v-12", "*", "h0"]],
+    ["uno:8", "led-r:A", "red", ["v-28", "*", "h-12"]],
+    ["uno:11", "led-y:A", "orange", ["v-24", "*", "h-8"]],
+    ["uno:9", "led-g:A", "green", ["v-20", "*", "h-4"]],
+    ["uno:13", "led-w:A", "gray", ["v-16", "*", "h0"]]
+  ]
+}
