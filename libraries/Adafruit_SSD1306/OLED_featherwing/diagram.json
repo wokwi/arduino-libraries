@@ -9,21 +9,21 @@
       "id": "btn-red",
       "type": "wokwi-pushbutton",
       "attrs": { "color": "red" },
-      "top": 10,
+      "top": 0,
       "left": 120
     },
     {
       "id": "btn-green",
       "type": "wokwi-pushbutton",
-      "top": 10,
-      "left": 200,
+      "top": 0,
+      "left": 220,
       "attrs": { "color": "green" }
     },
     {
       "id": "btn-blue",
       "type": "wokwi-pushbutton",
-      "top": 10,
-      "left": 280,
+      "top": 0,
+      "left": 320,
       "attrs": { "color": "blue" }
     }
   ],
@@ -31,12 +31,13 @@
     ["uno:GND.2", "ssd1306:GND", "black", ["v12", "*", "h0"]],
     ["uno:5V", "ssd1306:VIN", "red", ["v16", "*", "h0"]],
     ["uno:A4", "ssd1306:DATA", "blue", ["v20", "*", "h0"]],
+    ["uno:A5", "ssd1306:CLK", "purple", ["v24", "*", "h0"]],
     ["uno:GND.1", "btn-blue:2.r", "black", ["v-12", "*", "h6"]],
     ["uno:GND.1", "btn-green:2.r", "black", ["v-12", "*", "h6"]],
     ["uno:GND.1", "btn-red:2.r", "black", ["v-12", "*", "h6"]],
-    ["uno:9", "btn-red:1.l", "red", []],
-    ["uno:6", "btn-green:1.l", "green", []],
-    ["uno:5", "btn-blue:1.l", "blue", []]
+    ["uno:9", "btn-red:1.l", "red", ["v-18", "*", "h-12"]],
+    ["uno:6", "btn-green:1.l", "green", ["v-20", "*", "h-12"]],
+    ["uno:5", "btn-blue:1.l", "blue", ["v-18", "*", "h-12"]]
 
   ]
 }
