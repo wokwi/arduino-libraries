@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "id": "uno", "type": "wokwi-arduino-uno", "top": 200, "left": 20 },
+    { "id": "keypad", "type": "wokwi-membrane-keypad", "left": 360, "top": 140 },
+    { "id": "servo", "type": "wokwi-servo", "left": 400, "top": 20 },
+    { "id": "lcd", "type": "wokwi-lcd1602", "top": 8, "left": 20 },
+    { "id": "r1", "type": "wokwi-resistor", "top": 140, "left": 220, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    ["uno:GND.1", "lcd:VSS", "black", []],
+    ["uno:GND.1", "lcd:K", "black", []],
+    ["uno:GND.1", "lcd:RW", "black", []],
+    ["uno:5V", "lcd:VDD", "red", []],
+    ["uno:5V", "r1:2", "red", []],
+    ["r1:1", "lcd:A", "pink", []],
+    ["uno:12", "lcd:RS", "blue", [] ],
+    ["uno:11", "lcd:E", "purple", [] ],
+    ["uno:10", "lcd:D4", "green", [] ],
+    ["uno:9", "lcd:D5",  "brown", [] ],
+    ["uno:8", "lcd:D6", "gold", [] ],
+    ["uno:7", "lcd:D7", "gray", [] ],
+    ["uno:6", "servo:PWM", "orange", []],
+    ["uno:5V", "servo:V+", "red", []],
+    ["uno:GND.1", "servo:GND", "black", []],
+    ["uno:A3", "keypad:C1", "brown", []],
+    ["uno:A2", "keypad:C2", "gold", []],
+    ["uno:A1", "keypad:C3", "orange", []],
+    ["uno:A0", "keypad:C4", "pink", []],
+    ["uno:5", "keypad:R1", "blue", []],
+    ["uno:4", "keypad:R2", "green", []],
+    ["uno:3", "keypad:R3", "purple", []],
+    ["uno:2", "keypad:R4", "gray", []]
+  ]
+}
