@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "id": "uno",
+	 "type": "wokwi-arduino-uno",
+	  "top": 10,
+	   "left": 20
+	    },
+    { "id": "ssd1306",
+	 "type": "wokwi-ssd1306",
+	  "left": 100,
+	   "top": 230,
+   	   "attrs": {"i2c-address": "0x3C"}
+ }
+  ],
+  "connections": [
+    ["uno:GND.2", "ssd1306:GND", "black", ["v12", "*", "h0"]],
+    ["uno:5V", "ssd1306:VIN", "red", ["v16", "*", "h0"]],
+    ["uno:A4", "ssd1306:DATA", "blue", ["v20", "*", "h0"]],
+    ["uno:A5", "ssd1306:CLK", "purple", ["v24", "*", "h0"]]
+  ]
+}
