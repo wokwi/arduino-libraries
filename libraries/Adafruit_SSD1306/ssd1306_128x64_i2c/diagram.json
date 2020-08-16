@@ -3,8 +3,17 @@
   "author": "Uri Shaked",
   "editor": "wokwi",
   "parts": [
-    { "id": "uno", "type": "wokwi-arduino-uno", "top": 10, "left": 20 },
-    { "id": "ssd1306", "type": "wokwi-ssd1306", "left": 100, "top": 230 }
+    { "id": "uno",
+	 "type": "wokwi-arduino-uno",
+	  "top": 10,
+	   "left": 20
+	    },
+    { "id": "ssd1306",
+	 "type": "wokwi-ssd1306",
+	  "left": 100,
+	   "top": 230,
+   	   "attrs": {"i2c-address": "0x3D"}
+ }
   ],
   "connections": [
     ["uno:GND.2", "ssd1306:GND", "black", ["v12", "*", "h0"]],
