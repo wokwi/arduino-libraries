@@ -43,12 +43,12 @@
     ["uno:5V", "servo:V+", "red", ["v16", "h-118", "v-244", " h282"]],
     ["uno:GND.1", "servo:GND", "black", ["v-46", "*", "v88", "h-60"]],
     ["uno:A3", "keypad:C1", "brown", ["v116", "*", "h0", "v0"]],
-    ["uno:A2", "keypad:C2", "gold", ["120", "*", "h0", "v0"]],
+    ["uno:A2", "keypad:C2", "gray", ["v120", "*", "h0", "v0"]],
     ["uno:A1", "keypad:C3", "orange", ["v124", "*", "h0", "v0"]],
     ["uno:A0", "keypad:C4", "pink", ["v128", "*", "h0", "v0"]],
     ["uno:5", "keypad:R1", "blue", ["v-34", "h96", "*", "v12"]],
     ["uno:4", "keypad:R2", "green", ["v-30", "h80", "*", "v16"]],
     ["uno:3", "keypad:R3", "purple", ["v-26", "h64", "*", "v20"]],
-    ["uno:2", "keypad:R4", "gray", ["v-22", "h48", "*", "v24"]]
+    ["uno:2", "keypad:R4", "gold", ["v-22", "h48", "*", "v24"]]
   ]
 }
