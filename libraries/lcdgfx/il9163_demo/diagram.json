@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "id": "uno", "type": "wokwi-arduino-uno", "top": 160, "left": 20 },
+    { "id": "lcd", "type": "wokwi-il9163", "left": 100, "top": 0 }
+  ],
+  "connections": [
+    ["uno:GND.1", "lcd:GND", "black", ["v-12", "*", "h0"]],
+    ["uno:5V", "lcd:VCC", "red", ["v-28", "*", "h0"]],
+    ["uno:13", "lcd:SCK", "gold", ["v-8", "*", "v20"]],
+    ["uno:12", "lcd:MISO", "green", ["v-8", "*", "v24"]],
+    ["uno:11", "lcd:MOSI", "blue", ["v-8", "*", "v16"]],
+    ["uno:5", "lcd:D/C", "gray", ["v0", "*", "v4"]],
+    ["uno:4", "lcd:CS", "purple", ["v0", "*", "v8"]],
+    ["uno:3", "lcd:RESET", "orange", ["v0", "*", "v12"]]
+  ]
+}
