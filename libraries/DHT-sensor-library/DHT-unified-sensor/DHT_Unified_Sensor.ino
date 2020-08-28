@@ -1,117 +1,85 @@
-//
-//    FILE: dht22_test.ino
-//  AUTHOR: Rob Tillaart
-// VERSION: 0.1.03
-// PURPOSE: DHT library test sketch for DHT22 && Arduino
-//     URL:
-// HISTORY:
-// 0.1.03 extended stats for all errors
-// 0.1.02 added counters for error-regression testing.
-// 0.1.01
-// 0.1.00 initial version
-//
-// Released to the public domain
-//
+// DHT Temperature & Humidity Sensor
+// Unified Sensor Library Example
+// Written by Tony DiCola for Adafruit Industries
+// Released under an MIT license.
 
-#include <dht.h>
+// REQUIRES the following Arduino libraries:
+// - DHT Sensor Library: https://github.com/adafruit/DHT-sensor-library
+// - Adafruit Unified Sensor Lib: https://github.com/adafruit/Adafruit_Sensor
 
-dht DHT;
+#include <Adafruit_Sensor.h>
+#include <DHT.h>
+#include <DHT_U.h>
 
-#define DHT22_PIN 5
+#define DHTPIN 2     // Digital pin connected to the DHT sensor 
+// Feather HUZZAH ESP8266 note: use pins 3, 4, 5, 12, 13 or 14 --
+// Pin 15 can work but DHT must be disconnected during program upload.
 
-struct
-{
-    uint32_t total;
-    uint32_t ok;
-    uint32_t crc_error;
-    uint32_t time_out;
-    uint32_t connect;
-    uint32_t ack_l;
-    uint32_t ack_h;
-    uint32_t unknown;
-} stat = { 0,0,0,0,0,0,0,0};
+// Uncomment the type of sensor in use:
+//#define DHTTYPE    DHT11     // DHT 11
+#define DHTTYPE    DHT22     // DHT 22 (AM2302)
+//#define DHTTYPE    DHT21     // DHT 21 (AM2301)
 
-void setup()
-{
-    Serial.begin(115200);
-    Serial.println("dht22_test.ino");
-    Serial.print("LIBRARY VERSION: ");
-    Serial.println(DHT_LIB_VERSION);
-    Serial.println();
-    Serial.println("Type,\tstatus,\tHumidity (%),\tTemperature (C)\tTime (us)");
+// See guide for details on sensor wiring and usage:
+//   https://learn.adafruit.com/dht/overview
+
+DHT_Unified dht(DHTPIN, DHTTYPE);
+
+uint32_t delayMS;
+
+void setup() {
+  Serial.begin(9600);
+  // Initialize device.
+  dht.begin();
+  Serial.println(F("DHTxx Unified Sensor Example"));
+  // Print temperature sensor details.
+  sensor_t sensor;
+  dht.temperature().getSensor(&sensor);
+  Serial.println(F("------------------------------------"));
+  Serial.println(F("Temperature Sensor"));
+  Serial.print  (F("Sensor Type: ")); Serial.println(sensor.name);
+  Serial.print  (F("Driver Ver:  ")); Serial.println(sensor.version);
+  Serial.print  (F("Unique ID:   ")); Serial.println(sensor.sensor_id);
+  Serial.print  (F("Max Value:   ")); Serial.print(sensor.max_value); Serial.println(F("°C"));
+  Serial.print  (F("Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("°C"));
+  Serial.print  (F("Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("°C"));
+  Serial.println(F("------------------------------------"));
+  // Print humidity sensor details.
+  dht.humidity().getSensor(&sensor);
+  Serial.println(F("Humidity Sensor"));
+  Serial.print  (F("Sensor Type: ")); Serial.println(sensor.name);
+  Serial.print  (F("Driver Ver:  ")); Serial.println(sensor.version);
+  Serial.print  (F("Unique ID:   ")); Serial.println(sensor.sensor_id);
+  Serial.print  (F("Max Value:   ")); Serial.print(sensor.max_value); Serial.println(F("%"));
+  Serial.print  (F("Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("%"));
+  Serial.print  (F("Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("%"));
+  Serial.println(F("------------------------------------"));
+  // Set delay between sensor readings based on sensor details.
+  delayMS = sensor.min_delay / 1000;
 }
 
-void loop()
-{
-    // READ DATA
-    Serial.print("DHT22, \t");
-
-    uint32_t start = micros();
-    int chk = DHT.read22(DHT22_PIN);
-    uint32_t stop = micros();
-
-    stat.total++;
-    switch (chk)
-    {
-    case DHTLIB_OK:
-        stat.ok++;
-        Serial.print("OK,\t");
-        break;
-    case DHTLIB_ERROR_CHECKSUM:
-        stat.crc_error++;
-        Serial.print("Checksum error,\t");
-        break;
-    case DHTLIB_ERROR_TIMEOUT:
-        stat.time_out++;
-        Serial.print("Time out error,\t");
-        break;
-    case DHTLIB_ERROR_CONNECT:
-        stat.connect++;
-        Serial.print("Connect error,\t");
-        break;
-    case DHTLIB_ERROR_ACK_L:
-        stat.ack_l++;
-        Serial.print("Ack Low error,\t");
-        break;
-    case DHTLIB_ERROR_ACK_H:
-        stat.ack_h++;
-        Serial.print("Ack High error,\t");
-        break;
-    default:
-        stat.unknown++;
-        Serial.print("Unknown error,\t");
-        break;
-    }
-    // DISPLAY DATA
-    Serial.print(DHT.humidity, 1);
-    Serial.print(",\t");
-    Serial.print(DHT.temperature, 1);
-    Serial.print(",\t");
-    Serial.print(stop - start);
-    Serial.println();
-
-    if (stat.total % 20 == 0)
-    {
-        Serial.println("\nTOT\tOK\tCRC\tTO\tCON\tACK_L\tACK_H\tUNK");
-        Serial.print(stat.total);
-        Serial.print("\t");
-        Serial.print(stat.ok);
-        Serial.print("\t");
-        Serial.print(stat.crc_error);
-        Serial.print("\t");
-        Serial.print(stat.time_out);
-        Serial.print("\t");
-        Serial.print(stat.connect);
-        Serial.print("\t");
-        Serial.print(stat.ack_l);
-        Serial.print("\t");
-        Serial.print(stat.ack_h);
-        Serial.print("\t");
-        Serial.print(stat.unknown);
-        Serial.println("\n");
-    }
-    delay(2000);
+void loop() {
+  // Delay between measurements.
+  delay(delayMS);
+  // Get temperature event and print its value.
+  sensors_event_t event;
+  dht.temperature().getEvent(&event);
+  if (isnan(event.temperature)) {
+    Serial.println(F("Error reading temperature!"));
+  }
+  else {
+    Serial.print(F("Temperature: "));
+    Serial.print(event.temperature);
+    Serial.println(F("°C"));
+  }
+  // Get humidity event and print its value.
+  dht.humidity().getEvent(&event);
+  if (isnan(event.relative_humidity)) {
+    Serial.println(F("Error reading humidity!"));
+  }
+  else {
+    Serial.print(F("Humidity: "));
+    Serial.print(event.relative_humidity);
+    Serial.println(F("%"));
+  }
 }
-//
-// END OF FILE
-//
