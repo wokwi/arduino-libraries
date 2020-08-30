@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "uno",
+      "type": "wokwi-arduino-uno",
+      "top": 390,
+      "left": 60
+    },
+    {
+      "id": "neopixels",
+      "type": "wokwi-neopixel-matrix",
+      "top": 0,
+      "left": 0,
+      "attrs": {
+        "rows": "16",
+        "cols": "16",
+        "matrixLayout": "serpentine"
+      }
+    }
+  ],
+  "connections": [
+    ["uno:GND.1", "neopixels:VSS", "black", ["v-20", "*", "h2"]],
+    ["uno:3", "neopixels:DIN", "green", ["v-16", "*", "h6"]],
+    ["uno:5V", "neopixels:VDD", "red", ["v20", "h-95", "*", "v0", "h-5"]]
+  ]
+}
