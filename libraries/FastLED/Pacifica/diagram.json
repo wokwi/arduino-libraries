@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Mark Kriegsman (added by Marc Miller)",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "uno",
+      "type": "wokwi-arduino-uno",
+      "top": 190,
+      "left": 60
+    },
+    {
+      "id": "neopixels",
+      "type": "wokwi-neopixel-canvas",
+      "top": 0,
+      "left": 20,
+      "attrs": {
+        "rows": "6",
+        "cols": "10",
+        "matrixBrightness": "3",
+        "pixelate": 0
+      }
+    }
+  ],
+  "connections": [
+    ["uno:GND.1", "neopixels:VSS", "black", ["v-20", "*", "h2"]],
+    ["uno:3", "neopixels:DIN", "green", ["v-16", "*", "h6"]],
+    ["uno:5V", "neopixels:VDD", "red", ["v20", "h-95", "*", "v0", "h-5"]]
+  ]
+}
