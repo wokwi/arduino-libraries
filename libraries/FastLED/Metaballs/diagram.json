@@ -16,15 +16,13 @@
       "left": 0,
       "attrs": {
         "rows": "16",
-        "cols": "16",
-        "matrixLayout": "serpentine",
-        "matrixBrightness": "10"
+        "cols": "16"
       }
     }
   ],
   "connections": [
     ["uno:GND.1", "neopixels:VSS", "black", ["v0", "*", "v16"]],
-    ["uno:2", "neopixels:DIN", "green", ["v-16", "*", "v8"]],
+    ["uno:3", "neopixels:DIN", "green", ["v-16", "*", "v8"]],
     ["uno:5V", "neopixels:VDD", "red", ["v20", "h-95", "*", "v8"]]
   ]
 }
