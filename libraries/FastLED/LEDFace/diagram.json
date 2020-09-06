@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "natron77",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "arduino",
+      "type": "wokwi-arduino-mega",
+      "rotate": 0,
+      "top": 750,
+      "left": 150,
+      "hide": false
+    },
+    {
+      "id": "neopixels",
+      "type": "wokwi-neopixel-canvas",
+      "top": 0,
+      "left": 50,
+      "attrs": {
+        "rows": "28",
+        "cols": "26",
+        "pixelate": "1"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 666,
+      "left": 40,
+      "rotate": 270,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 666,
+      "left": 90,
+      "rotate": 270,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn3",
+      "top": 666,
+      "left": 140,
+      "rotate": 270,
+      "attrs": {
+        "color": "blue"
+      }
+    }
+  ],
+  "connections": [
+    ["btn1:1.l", "arduino:9", "orange", ["*", "v-16"]],
+    ["btn1:2.r", "arduino:GND.1", "black", ["v-5", "h0"]],
+    ["btn2:1.l", "arduino:10", "green", ["*", "v-20"]],
+    ["btn2:2.r", "arduino:GND.1", "black", ["v-5", "h0"]],
+    ["btn3:1.l", "arduino:11", "blue", ["*", "v-24"]],
+    ["btn3:2.r", "arduino:GND.1", "black", ["v-5", "h0"]],
+    ["arduino:GND.1", "neopixels:VSS", "black", ["v0", "*", "v16"]],
+    ["arduino:3", "neopixels:DIN", "green", ["v-16", "*", "v8"]],
+    ["arduino:5V", "neopixels:VDD", "red", ["v20", "h226", "*", "v24"]]
+  ]
+}
