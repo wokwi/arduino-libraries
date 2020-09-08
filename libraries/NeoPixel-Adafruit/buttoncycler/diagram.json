@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "uno",
+      "type": "wokwi-arduino-uno",
+      "top": 95,
+      "left": 375
+    },
+    {
+      "id": "btn-blue",
+      "type": "wokwi-pushbutton",
+      "attrs": { "color": "blue" },
+      "top": 0,
+      "left": 546
+    },
+    {
+      "id": "neopixels",
+      "type": "wokwi-neopixel-canvas",
+      "top": 20,
+      "left": 10,
+      "attrs": {
+        "rows": "1",
+        "cols": "16",
+        "matrixBrightness": "10"
+      }
+    }
+  ],
+  "connections": [
+    ["uno:GND.1", "neopixels:VSS", "black", ["v0", "*", "v16"]],
+    ["uno:6", "neopixels:DIN", "green", ["v-16", "*", "v8"]],
+    ["uno:2", "btn-blue:2.r", "orange", ["v-36", "*", "h10"]],
+    ["uno:5V", "neopixels:VDD", "red", ["v30", "h-386", "*", "v8"]]
+  ]
+}
