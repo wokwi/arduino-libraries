@@ -23,7 +23,7 @@
   ],
   "connections": [
     ["uno:GND.1", "neopixels:VSS", "black", ["v0", "*", "v16"]],
-    ["uno:5", "neopixels:DIN", "green", ["v-16", "*", "v28"]],
+    ["uno:6", "neopixels:DIN", "green", ["v-16", "*", "v28"]],
     ["uno:5V", "neopixels:VDD", "red", ["v20", "h-95", "*", "v8"]]
   ]
 }
