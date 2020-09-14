@@ -30,6 +30,7 @@
   ],
   "connections": [
     ["uno:GND.1", "neopixels:VSS", "black", ["v0", "*", "v16"]],
+    ["uno:GND.1", "btn-blue:2.l", "black", ["v0","*", "*", "*"]],
     ["uno:6", "neopixels:DIN", "green", ["v-16", "*", "v8"]],
     ["uno:2", "btn-blue:2.r", "orange", ["v-36", "*", "h10"]],
     ["uno:5V", "neopixels:VDD", "red", ["v30", "h-386", "*", "v8"]]
