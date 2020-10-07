@@ -40,7 +40,7 @@
     ["uno:8", "lcd:D6", "gold", ["v-32", "*", "h0", "v20"]],
     ["uno:7", "lcd:D7", "gray", ["v-36", "*", "h0", "v20"]],
     ["uno:6", "servo:PWM", "orange", ["v-40", "*", "h0", "h-52"]],
-    ["uno:5V", "servo:V+", "red", ["v16", "h-118", "v-244", " h282"]],
+    ["uno:5V", "servo:V+", "red", ["v16", "h-118", "v-244", "*", "h-56"]],
     ["uno:GND.1", "servo:GND", "black", ["v-46", "*", "v88", "h-60"]],
     ["uno:A3", "keypad:C1", "brown", ["v116", "*", "h0", "v0"]],
     ["uno:A2", "keypad:C2", "gray", ["v120", "*", "h0", "v0"]],
