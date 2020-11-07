@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "id": "uno", "type": "wokwi-arduino-uno", "left": 20, "top": 128 },
+    {
+      "id": "display",
+      "type": "wokwi-7segment",
+      "left": 64,
+      "top": 28,
+      "attrs": { "digits": "4", "common": "anode" }
+    }
+  ],
+  "connections": [
+    ["uno:2", "display:DIG1", "blue", ["v-12", "h24", "*", "v-24"]],
+    ["uno:3", "display:DIG2", "orange", ["v-16", "h28", "*", "v-16"]],
+    ["uno:4", "display:DIG3", "red", ["v-20", "h32", "*", "v-12"]],
+    ["uno:5", "display:DIG4", "purple", ["v-32", "*", "h0"]],
+    ["uno:6", "display:A", "gray", ["v-24", "h46", "*", "v-20"]],
+    ["uno:7", "display:B", "green", ["v-28", "h50", "*", "v-8"]],
+    ["uno:8", "display:C", "blue", ["v-28", "*", "h0"]],
+    ["uno:9", "display:D", "orange", ["v-20", "*", "h0"]],
+    ["uno:10", "display:E", "red", ["v-16", "*", "h0"]],
+    ["uno:11", "display:F", "purple", ["v-12", "h-104", "*", "v-16"]],
+    ["uno:12", "display:G", "gray", ["v-24", "*", "h0"]],
+    ["uno:13", "display:DP", "green", ["v-28", "*", "h0"]]
+  ]
+}
