@@ -26,6 +26,9 @@ bool button2Pressed = false;
 
 
 void setup() {
+  pinMode(BUTTON_0, INPUT_PULLUP);
+  pinMode(BUTTON_1, INPUT_PULLUP);
+  pinMode(BUTTON_2, INPUT_PULLUP);
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   FastLED.setBrightness(BRIGHTNESS);
   mid(); // Start the display with the forward-facing face
