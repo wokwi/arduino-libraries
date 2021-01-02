@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "uno",
+      "type": "wokwi-arduino-uno",
+      "top": 0,
+      "left": 20
+    },
+    {
+      "id": "ds1307",
+      "type": "wokwi-ds1307",
+      "top": 250,
+      "left": 220
+    }
+  ],
+  "connections": [
+    ["uno:GND.2", "ds1307:GND", "black", ["v20", "*", "v0"]],
+    ["uno:5V", "ds1307:5V", "red", ["v0"]],
+    ["uno:A4", "ds1307:SDA", "green", ["v16", "h0", "*", "h-34"]],
+    ["uno:A5", "ds1307:SCL", "orange", ["v20", "*", "h-30"]]
+  ]
+}
