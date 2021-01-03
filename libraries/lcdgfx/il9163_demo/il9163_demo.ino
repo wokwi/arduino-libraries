@@ -1,14 +1,18 @@
 /*
     MIT License
+
     Copyright (c) 2019-2020, Alexey Dynda
+
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
     copies of the Software, and to permit persons to whom the Software is
     furnished to do so, subject to the following conditions:
+
     The above copyright notice and this permission notice shall be included in all
     copies or substantial portions of the Software.
+
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,6 +30,7 @@
 /* !!! THIS DEMO RUNS in FULL COLOR MODE */
 
 #include "lcdgfx.h"
+#include "lcdgfx_gui.h"
 #include "owl.h"
 
 DisplayIL9163_128x128x16_SPI display(3,{-1, 4, 5, 0,-1,-1}); // Use this line for Atmega328p
@@ -66,8 +71,6 @@ const PROGMEM uint8_t heartImage8[ 8 * 8 ] =
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-SAppMenu menu;
-
 const char *menuItems[] =
 {
     "draw bitmap",
@@ -76,6 +79,8 @@ const char *menuItems[] =
     "nano canvas",
     "draw lines",
 };
+
+LcdGfxMenu menu( menuItems, sizeof(menuItems) / sizeof(char *) );
 
 static void bitmapDemo()
 {
@@ -142,10 +147,10 @@ static void textDemo()
     display.printFixed(0, 16, "bold text?", STYLE_BOLD);
     display.setColor(RGB_COLOR16(0,255,255));
     display.printFixed(0, 24, "Italic text?", STYLE_ITALIC);
-    display.negativeMode();
     display.setColor(RGB_COLOR16(255,255,255));
+    display.invertColors();
     display.printFixed(0, 32, "Inverted bold?", STYLE_BOLD);
-    display.positiveMode();
+    display.invertColors();
     lcd_delay(3000);
 }
 
@@ -189,8 +194,7 @@ void setup()
     display.setFixedFont(ssd1306xled_font6x8);
 
     display.fill( 0x0000 );
-    display.createMenu( &menu, menuItems, sizeof(menuItems) / sizeof(char *) );
-    display.showMenu( &menu );
+    menu.show( display );
 }
 
 uint8_t rotation = 0;
@@ -198,7 +202,7 @@ uint8_t rotation = 0;
 void loop()
 {
     lcd_delay(1000);
-    switch (display.menuSelection(&menu))
+    switch (menu.selection())
     {
         case 0:
             bitmapDemo();
@@ -223,14 +227,14 @@ void loop()
         default:
             break;
     }
-    if ((menu.count - 1) == display.menuSelection(&menu))
+    if ((menu.size() - 1) == menu.selection())
     {
          display.getInterface().setRotation((++rotation) & 0x03);
     }
     display.fill( 0x00 );
     display.setColor(RGB_COLOR16(255,255,255));
-    display.showMenu(&menu);
+    menu.show( display );
     lcd_delay(500);
-    display.menuDown(&menu);
-    display.updateMenu(&menu);
+    menu.down();
+    menu.show( display );
 }
