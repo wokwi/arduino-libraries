@@ -4,7 +4,7 @@
   "editor": "wokwi",
   "parts": [
     { "id": "uno", "type": "wokwi-arduino-uno", "top": 20, "left": 20 },
-    { "id": "lcd", "type": "wokwi-lcd1602", "top": 242, "left": 50, "attrs": {"pins": "i2c" } }
+    { "id": "lcd", "type": "wokwi-lcd2004", "top": 242, "left": 50, "attrs": {"pins": "i2c" } }
   ],
   "connections": [
     ["uno:GND.2", "lcd:GND", "black", ["v14", "*", "h-20"]],
