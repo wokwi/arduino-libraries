@@ -15,7 +15,7 @@
       "type": "wokwi-servo",
       "left": 400,
       "top": 20,
-      "attrs": { "horncolor": "black" }
+      "attrs": { "hornColor": "black" }
     },
     { "id": "lcd", "type": "wokwi-lcd1602", "top": 8, "left": 20 },
     {

@@ -10,7 +10,7 @@
       "type": "wokwi-servo",
       "left": 400,
       "top": 200,
-      "attrs": { "horncolor": "black" },
+      "attrs": { "hornColor": "black" },
       "rotate": 0
     }
 
