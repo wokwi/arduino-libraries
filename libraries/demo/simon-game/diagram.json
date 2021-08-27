@@ -3,65 +3,77 @@
   "author": "Uri Shaked",
   "editor": "wokwi",
   "parts": [
-    { "id": "uno", "type": "wokwi-arduino-uno", "top": 160, "left": 20 },
-    { "id": "buzzer", "type": "wokwi-buzzer", "left": 124, "top": 10 },
-    { "id": "led-red", "type": "wokwi-led", "attrs": { "color": "red" }, "left": 6, "top": 10 },
-    { "id": "led-green", "type": "wokwi-led", "attrs": { "color": "green" }, "left": 6, "top": 68 },
-    { "id": "led-blue", "type": "wokwi-led", "attrs": { "color": "blue" }, "left": 270, "top": 10 },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 177.33, "left": 20, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 16, "left": 124, "attrs": { "volume": "0.1" } },
+    { "type": "wokwi-led", "id": "led-red", "top": 10, "left": 6, "attrs": { "color": "red" } },
     {
-      "id": "led-yellow",
       "type": "wokwi-led",
-      "attrs": { "color": "yellow" },
-      "left": 270,
-      "top": 68
-    },
-    {
-      "id": "btn-red",
-      "type": "wokwi-pushbutton",
-      "attrs": { "color": "red" },
-      "top": 10,
-      "left": 46
-    },
-    {
-      "id": "btn-green",
-      "type": "wokwi-pushbutton",
-      "top": 70,
-      "left": 46,
+      "id": "led-green",
+      "top": 73,
+      "left": 6,
       "attrs": { "color": "green" }
     },
     {
-      "id": "btn-blue",
-      "type": "wokwi-pushbutton",
+      "type": "wokwi-led",
+      "id": "led-blue",
       "top": 10,
-      "left": 200,
+      "left": 270,
       "attrs": { "color": "blue" }
     },
     {
-      "id": "btn-yellow",
+      "type": "wokwi-led",
+      "id": "led-yellow",
+      "top": 73,
+      "left": 270,
+      "attrs": { "color": "yellow" }
+    },
+    {
       "type": "wokwi-pushbutton",
-      "attrs": { "color": "yellow" },
-      "top": 70,
-      "left": 200
+      "id": "btn-red",
+      "top": 10,
+      "left": 46,
+      "attrs": { "color": "red", "key": "1", "label": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn-green",
+      "top": 76,
+      "left": 46,
+      "attrs": { "color": "green", "key": "2", "label": "2" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn-blue",
+      "top": 10,
+      "left": 200,
+      "attrs": { "color": "blue", "key": "3", "label": "3" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn-yellow",
+      "top": 76,
+      "left": 200,
+      "attrs": { "color": "yellow", "key": "4", "label": "4" }
     }
   ],
   "connections": [
-    ["uno:GND.1", "buzzer:1", "black", ["v-12", "*", "h0"]],
-    ["uno:2", "btn-yellow:1.l", "gold", ["v-48", "*", "h-6"]],
-    ["uno:GND.1", "btn-yellow:2.r", "black", ["v-12", "*", "h6"]],
-    ["uno:3", "btn-blue:1.l", "blue", ["v-44", "*", "h-10"]],
-    ["uno:GND.1", "btn-blue:2.r", "black", ["v-12", "*", "h6"]],
-    ["uno:4", "btn-green:2.r", "green", ["v-40", "*", "h6"]],
-    ["uno:GND.1", "btn-green:1.l", "black", ["v-12", "*", "h-6"]],
-    ["uno:5", "btn-red:2.r", "orange", ["v-36", "*", "h10"]],
-    ["uno:GND.1", "btn-red:1.l", "black", ["v-12", "*", "h-6"]],
-    ["uno:8", "buzzer:2", "purple", ["v-32", "*", "h0"]],
-    ["uno:9", "led-yellow:A", "gold", ["v-28", "*", "h0"]],
-    ["uno:GND.1", "led-yellow:C", "black", ["v-12", "*", "h-15", "v4"]],
-    ["uno:10", "led-blue:A", "blue", ["v-24", "*", "h8"]],
-    ["uno:GND.1", "led-blue:C", "black", ["v-12", "*", "h-15", "v4"]],
-    ["uno:11", "led-green:A", "green", ["v-20", "*", "h0"]],
-    ["uno:GND.1", "led-green:C", "black", ["v-12", "*", "h-8", "v4"]],
-    ["uno:12", "led-red:A", "orange", ["v-16", "*", "h6"]],
-    ["uno:GND.1", "led-red:C", "black", ["v-12", "*", "h-8", "v4"]]
+    [ "uno:GND.1", "buzzer:1", "black", [ "v-12", "*", "h0" ] ],
+    [ "uno:2", "btn-yellow:1.l", "gold", [ "v-48", "*", "h-6" ] ],
+    [ "uno:GND.1", "btn-yellow:2.r", "black", [ "v-12", "*", "h6" ] ],
+    [ "uno:3", "btn-blue:1.l", "blue", [ "v-44", "*", "h-10" ] ],
+    [ "uno:GND.1", "btn-blue:2.r", "black", [ "v-12", "*", "h6" ] ],
+    [ "uno:4", "btn-green:2.r", "green", [ "v-40", "*", "h6" ] ],
+    [ "uno:GND.1", "btn-green:1.l", "black", [ "v-12", "*", "h-6" ] ],
+    [ "uno:5", "btn-red:2.r", "orange", [ "v-36", "*", "h10" ] ],
+    [ "uno:GND.1", "btn-red:1.l", "black", [ "v-12", "*", "h-6" ] ],
+    [ "uno:8", "buzzer:2", "purple", [ "v-32", "*", "h0" ] ],
+    [ "uno:9", "led-yellow:A", "gold", [ "v-28", "*", "h0" ] ],
+    [ "uno:GND.1", "led-yellow:C", "black", [ "v-12", "*", "h-15", "v4" ] ],
+    [ "uno:10", "led-blue:A", "blue", [ "v-24", "*", "h8" ] ],
+    [ "uno:GND.1", "led-blue:C", "black", [ "v-12", "*", "h-15", "v4" ] ],
+    [ "uno:11", "led-green:A", "green", [ "v-20", "*", "h0" ] ],
+    [ "uno:GND.1", "led-green:C", "black", [ "v-12", "*", "h-8", "v4" ] ],
+    [ "uno:12", "led-red:A", "orange", [ "v-16", "*", "h6" ] ],
+    [ "uno:GND.1", "led-red:C", "black", [ "v-12", "*", "h-8", "v4" ] ]
   ]
 }
