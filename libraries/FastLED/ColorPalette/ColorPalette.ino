@@ -36,7 +36,6 @@ extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 
 
 void setup() {
-    delay( 3000 ); // power-up safety delay
     FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
     FastLED.setBrightness(  BRIGHTNESS );
 

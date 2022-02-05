@@ -20,7 +20,6 @@ FASTLED_USING_NAMESPACE
 CRGB leds[NUM_LEDS];
 
 void setup() {
-  delay( 3000); // 3 second delay for boot recovery, and a moment of silence
   FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS)
         .setCorrection( TypicalLEDStrip );
   FastLED.setMaxPowerInVoltsAndMilliamps( 5, MAX_POWER_MILLIAMPS);
@@ -36,37 +35,37 @@ void loop()
 
 //////////////////////////////////////////////////////////////////////////
 //
-// The code for this animation is more complicated than other examples, and 
-// while it is "ready to run", and documented in general, it is probably not 
+// The code for this animation is more complicated than other examples, and
+// while it is "ready to run", and documented in general, it is probably not
 // the best starting point for learning.  Nevertheless, it does illustrate some
 // useful techniques.
 //
 //////////////////////////////////////////////////////////////////////////
 //
-// In this animation, there are four "layers" of waves of light.  
+// In this animation, there are four "layers" of waves of light.
 //
 // Each layer moves independently, and each is scaled separately.
 //
-// All four wave layers are added together on top of each other, and then 
-// another filter is applied that adds "whitecaps" of brightness where the 
+// All four wave layers are added together on top of each other, and then
+// another filter is applied that adds "whitecaps" of brightness where the
 // waves line up with each other more.  Finally, another pass is taken
 // over the led array to 'deepen' (dim) the blues and greens.
 //
-// The speed and scale and motion each layer varies slowly within independent 
+// The speed and scale and motion each layer varies slowly within independent
 // hand-chosen ranges, which is why the code has a lot of low-speed 'beatsin8' functions
 // with a lot of oddly specific numeric ranges.
 //
 // These three custom blue-green color palettes were inspired by the colors found in
 // the waters off the southern coast of California, https://goo.gl/maps/QQgd97jjHesHZVxQ7
 //
-CRGBPalette16 pacifica_palette_1 = 
-    { 0x000507, 0x000409, 0x00030B, 0x00030D, 0x000210, 0x000212, 0x000114, 0x000117, 
+CRGBPalette16 pacifica_palette_1 =
+    { 0x000507, 0x000409, 0x00030B, 0x00030D, 0x000210, 0x000212, 0x000114, 0x000117,
       0x000019, 0x00001C, 0x000026, 0x000031, 0x00003B, 0x000046, 0x14554B, 0x28AA50 };
-CRGBPalette16 pacifica_palette_2 = 
-    { 0x000507, 0x000409, 0x00030B, 0x00030D, 0x000210, 0x000212, 0x000114, 0x000117, 
+CRGBPalette16 pacifica_palette_2 =
+    { 0x000507, 0x000409, 0x00030B, 0x00030D, 0x000210, 0x000212, 0x000114, 0x000117,
       0x000019, 0x00001C, 0x000026, 0x000031, 0x00003B, 0x000046, 0x0C5F52, 0x19BE5F };
-CRGBPalette16 pacifica_palette_3 = 
-    { 0x000208, 0x00030E, 0x000514, 0x00061A, 0x000820, 0x000927, 0x000B2D, 0x000C33, 
+CRGBPalette16 pacifica_palette_3 =
+    { 0x000208, 0x00030E, 0x000514, 0x00061A, 0x000820, 0x000927, 0x000B2D, 0x000C33,
       0x000E39, 0x001040, 0x001450, 0x001860, 0x001C70, 0x002080, 0x1040BF, 0x2060FF };
 
 
@@ -128,7 +127,7 @@ void pacifica_add_whitecaps()
 {
   uint8_t basethreshold = beatsin8( 9, 55, 65);
   uint8_t wave = beat8( 7 );
-  
+
   for( uint16_t i = 0; i < NUM_LEDS; i++) {
     uint8_t threshold = scale8( sin8( wave), 20) + basethreshold;
     wave += 7;
@@ -145,8 +144,8 @@ void pacifica_add_whitecaps()
 void pacifica_deepen_colors()
 {
   for( uint16_t i = 0; i < NUM_LEDS; i++) {
-    leds[i].blue = scale8( leds[i].blue,  145); 
-    leds[i].green= scale8( leds[i].green, 200); 
+    leds[i].blue = scale8( leds[i].blue,  145);
+    leds[i].green= scale8( leds[i].green, 200);
     leds[i] |= CRGB( 2, 5, 7);
   }
 }
