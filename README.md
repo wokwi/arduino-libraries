@@ -1,4 +1,3 @@
 # Arduino Libraries Playground
 
-Blog post coming soon! Visit https://wokwi.com/arduino-libraries for more information.
-
+This repository is deprecated. The code examples are now published directly on wokwi.com.
